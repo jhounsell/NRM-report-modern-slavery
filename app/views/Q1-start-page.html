@@ -1,0 +1,55 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Does the potential victim know where their exploiters are? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Who exploited them?</h1>
+
+      <form class="form" action="/know-where" method="post">
+
+
+        {{ govukCharacterCount({
+          name: "withHint",
+          id: "with-hint",
+          maxlength: 15000,
+          label: {
+            text: "Details about the exploiter(s)",
+            classes: "govuk-body",
+            isPageHeading: false
+          },
+          hint: {
+            text: "Include the languages the exploiters spoke, their gang or nicknames and if they had identifying features such as tattoos"
+          }
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+        
+          {{ govukButton({
+            text: "Save and exit",
+            classes: "govuk-button--secondary",
+            href: "/index"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

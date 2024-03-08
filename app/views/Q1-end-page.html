@@ -1,0 +1,151 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Does the potential victim know where their exploiters are? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/end-page" method="post">
+
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                How were they exploited?
+              </h1>
+            </legend>
+            <div id="waste-hint" class="govuk-hint">
+              Select all that apply.
+            </div>
+            <h2 class="govuk-heading-s">Labour and financial exploitation</h2>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+                <label class="govuk-label govuk-checkboxes__label" for="waste">
+                  Forced to work for nothing or almost nothing
+                </label>
+                <div id="waste-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                Victims may live in isolated areas or poor conditions, such as in squats or at their place of work. They may be unable to leave and threatened with violence.
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+                  Wages taken by force or coercion, such as through control of a bank account
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                  Forced to commit fraud, such as using their identity to claim benefits
+                </label>
+              </div>
+
+              <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+              <h2 class="govuk-heading-s">Sexual exploitation</h2>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                  Forced into prostitution
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                  Child sexual exploitation
+                </label>
+                <div id="waste-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                  This includes child sex trafficking
+                  </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                  Taken somewhere, held against their will and sexually assaulted
+                </label>
+                <div id="waste-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                  This includes child sex trafficking
+                  </div>
+                </div>
+
+              <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+              <h2 class="govuk-heading-s">Criminal exploitation</h2>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                  Forced to commit a crime, such as growing cannabis, drug dealing or begging
+                </label>
+                <div id="waste-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                  This includes being used as a drug mule across county lines. Victims will often be unpaid althought they may get food and somewhere to live.
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                  Organs, such as kidneys, removed against their will
+                </label>
+              </div>
+
+              <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+              <h2 class="govuk-heading-s">Domestic servitude</h2>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                  Forced to do unpaid or low paid household work by relatives or strangers
+                </label>
+                <div id="waste-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                  Victims who are exploited by relatives may have been forced into an arranged marriage and abused in other ways.
+                </div>
+              </div>
+
+            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
+                <label class="govuk-label govuk-checkboxes__label" for="contact">
+                  Other
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="contact-by-email">
+                    Enter other type of exploitation
+                  </label>
+                  <textarea class="govuk-textarea govuk-js-character-count__message" id="with-hint" name="withHint" rows="5"></textarea>
+                </div>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+        
+          {{ govukButton({
+            text: "Save and exit",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+        
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

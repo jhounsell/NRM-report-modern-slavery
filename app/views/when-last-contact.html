@@ -1,0 +1,81 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <form class="form" action="/when-last-contact-router" method="post">
+
+        {{ govukRadios({
+          name: "whenLastContact",
+          fieldset: {
+            legend: {
+              text: "When were the potential victim and exploiters last in contact?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "This includes in-person conversations, phone calls, instant messages, emails, writing, or communicating through another person"
+          },
+          items: [
+            {
+              value: "1 week",
+              text: "Within the last week"
+            },
+            {
+              value: "1 month",
+              text: "Within the last month"
+            },
+            {
+              value: "3 months",
+              text: "Within the last 3 months"
+            },
+            {
+              value: "6 months",
+              text: "Within the last 6 months"
+            },
+            {
+              value: "1 year",
+              text: "Over a year ago"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "unknown",
+              text: "Not sure"
+            }
+          ]
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+        
+          {{ govukButton({
+            text: "Save and exit",
+            classes: "govuk-button--secondary",
+            href: "/index"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

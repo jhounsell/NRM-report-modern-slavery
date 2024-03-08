@@ -1,0 +1,67 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Does the potential victim know where their exploiters are? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/future-concerns-singular-router" method="post">
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          name: "futureConcernsSingular",
+          fieldset: {
+            legend: {
+              text: "Are there concerns that the potential victim could be exploited again in the future?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "This includes concerns from other professionals or organisations involved. You must have reasons or evidence for these concerns"
+          },
+          items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+          ]
+        }) }}
+        
+        
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+        
+          {{ govukButton({
+            text: "Save and exit",
+            classes: "govuk-button--secondary",
+            href: "/index"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

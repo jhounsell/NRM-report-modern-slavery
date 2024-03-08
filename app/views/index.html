@@ -1,0 +1,100 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Prototype dashboard" %}
+
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+
+<h1 class="govuk-heading-l">
+  NRM Report modern slavery - HOF prototype
+  <span class="govuk-caption-l" id="last-updated">
+    Last updated: 08/03/2024
+    </span>    
+</h1>
+
+<h2 class="govuk-heading-s">
+  Winter/spring changes 2024
+</h2>
+
+<script>
+  const today = new Date();
+  const dateString = document.getElementById("last-updated").innerText.substr(14,10);
+  const [day, month, year] = dateString.split("/");
+  const dateObject = new Date (`${year}-${month}-${day}`)
+  const currentDate = new Date();
+  const timeDifference = currentDate - dateObject
+  const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  const weeksDifference = Math.floor(daysDifference / 7);
+  const monthsDifference = Math.floor(daysDifference / 30);
+
+  let result;
+  if (daysDifference === 0) {
+    result = 'today';
+  } 
+  else if (daysDifference < 14) {
+    result = daysDifference + " day(s) ago";
+  } else if (weeksDifference < 4 ) {
+    result = weeksDifference + " weeks ago";
+  } else {
+    result = monthsDifference + " month(s) ago"
+  }
+  document.getElementById("last-updated").innerHTML = "Last updated: " + result
+</script>
+
+{{ govukTaskList({
+  idPrefix: "company-details",
+  items: [
+    {
+      title: {
+        text: "'Where are the exploiters now?' question"
+      },
+      hint: {
+        text: "Includes questions before and after"
+      },
+      href: "/Q1-start-page",
+      status: {
+        tag: {
+          text: "Ready to view",
+          classes: "govuk-tag--green"
+        }
+      }
+    },
+    {
+      title: {
+        text: "'Last contact between the potential victim and their exploiters' question"
+      },
+      hint: {
+        text: "Includes questions before and after"
+      },
+      href: "/Q2-start-page",
+      status: {
+        tag: {
+          text: "Ready to view",
+          classes: "govuk-tag--green"
+        }
+      }
+    },
+    {
+      title: {
+        text: "'Are there concerns they could be exploited again in the future?' question"
+      },
+      hint: {
+        text: "Includes questions before and after"
+      },
+      href: "/Q3-start-page",
+      status: {
+        tag: {
+          text: "Ready to view",
+          classes: "govuk-tag--green"
+        }
+      }
+    }
+  ]
+}) }}
+
+{% endblock %}

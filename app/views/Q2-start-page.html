@@ -1,0 +1,56 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Does the potential victim know where their exploiters are? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">How and why did they leave the situation?</h1>
+
+      <form class="form" action="" method="post">
+
+
+        {{ govukCharacterCount({
+          name: "withHint",
+          id: "with-hint",
+          maxlength: 15000,
+          label: {
+            text: "How and why they left",
+            classes: "govuk-body",
+            isPageHeading: false
+          },
+          hint: {
+            text: "Ask if it was their decision to leave and if anyone helped them"
+          }
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue",
+            href: "/when-last-contact"
+          }) }}
+        
+          {{ govukButton({
+            text: "Save and exit",
+            classes: "govuk-button--secondary",
+            href: "/index"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

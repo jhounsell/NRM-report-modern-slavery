@@ -1,0 +1,71 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Does the potential victim know where their exploiters are? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Last contact between the potential victim and their exploiters
+      </h1>
+
+      <p>
+        To assess the risk that the potential victim may be exploited or trafficked again, we need to know about any communication between them and their exploiters.  
+      </p>
+
+      <p>
+        You can provide information about how they communicated, what was said and who was involved.  
+      </p>
+
+      <p>
+        Include details about any threats the exploiters have made. If applicable, describe any steps the potential victim has taken to prevent contact with their exploiters.   
+      </p>
+
+      <form class="form" action="" method="post">
+
+
+        {{ govukCharacterCount({
+          name: "withHint",
+          id: "with-hint",
+          maxlength: 15000,
+          rows: 7,
+          label: {
+            text: "Details of the last (contact)",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          hint: {
+            text: "You will be able to submit any files as evidence by email after you have submitted the report"
+          }
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue",
+            href: "/Q2-end-page"
+          }) }}
+        
+          {{ govukButton({
+            text: "Save and exit",
+            classes: "govuk-button--secondary",
+            href: "/index"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
